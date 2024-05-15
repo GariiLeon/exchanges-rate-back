@@ -19,7 +19,7 @@ const server = http.createServer(async function (req, res) {
         : await exchangeScrap.getExchanges();
     res.writeHead(200, { "Content-type": "application/json" });
     res.end(JSON.stringify(data));
-  } else if (_url.pathname == "/exchanges") {
+  } else if (_url.pathname == "/exchanges" && _url.query) {
     let _q = new URLSearchParams(_url.query);
     const exchangeData = await exchangesApi.getExchanges(
       _q.get("source"),
